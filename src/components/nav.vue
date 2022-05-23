@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="nav">
-      <img class="nav-logo" src="http://www.linquick.com.cn/datasy/attachment/202101/18/61ec6f67579d5b1d117bb8648d7fecdb.png">
+      <img class="nav-logo" src="http://www.yenyon.com/uploads/image/20200602/20200602095326_7488.jpeg">
       <ul class="nav-bar">
-        <li v-for="(item,index) in menuList" :key="index">
+        <li v-for="(item,index) in menuList" :key="index" :class="{active: item.isActive}">
           <router-link :to="item.path">{{item.menu}}</router-link>
         </li>
       </ul>
@@ -12,31 +12,11 @@
   </div>
 </template>
 <script>
+import { MENU_LIST } from '../data'
 export default {
   data(){
     return {
-      menuList:[
-        {
-          menu:'首页',
-          path:'/home'
-        },
-        {
-          menu:'关于公司',
-          path:'/about'
-        },
-        {
-          menu:'产品中心',
-          path:'/product'
-        },
-        {
-          menu:'新闻中心',
-          path:'/news'
-        },
-        {
-          menu:'联系我们',
-          path:'/contact'
-        },
-      ]
+      menuList: MENU_LIST
     }
   }
 }
@@ -51,7 +31,7 @@ export default {
   padding: 0 30px;
   background-color: transparent;
   &-logo {
-    height: 50px;
+    height: 100px;
   }
   &-bar {
     font-size: 14px;
@@ -67,7 +47,12 @@ export default {
           color: #333;
           text-decoration: none;
           &:hover {
-            color: red;
+            color: #409eff;
+          }
+        }
+        &.active {
+          a {
+            color: #409eff;
           }
         }
     }
